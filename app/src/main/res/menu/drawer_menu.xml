@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:checkable="true"
+        android:icon="@drawable/ic_baseline_home_24"/>
+
+    <item
+        android:id="@+id/galleryFragment"
+        android:title="@string/gallery"
+        android:checkable="true"
+        android:icon="@drawable/ic_baseline_gallery_24"/>
+    <item
+        android:id="@+id/SlideshowFragment"
+        android:title="@string/slideshow"
+        android:checkable="true"
+        android:icon="@drawable/ic_baseline_slideshow_24"/>
+
+
+
+
+
+</menu>

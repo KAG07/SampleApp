@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "yes_thats_me")
-data class model(
+data class Model(
     @PrimaryKey(autoGenerate = true)
     val code: Long,
     @ColumnInfo(name = "logic")

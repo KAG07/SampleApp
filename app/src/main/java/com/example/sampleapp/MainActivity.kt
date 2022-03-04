@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
+
 
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -22,10 +26,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         setSupportActionBar(toolbar)
 
+
         nav_view.setupWithNavController(navController)
         NavigationUI.setupActionBarWithNavController(this,navController,drawer)
 
         nav_view.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

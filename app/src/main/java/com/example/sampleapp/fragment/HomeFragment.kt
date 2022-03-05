@@ -13,30 +13,32 @@ import com.example.sampleapp.data.Model
 import com.example.sampleapp.viewmodel.homeviewmodel
 import com.example.sampleapp.R
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.ArrayList
 
 
 class HomeFragment : Fragment() {
 
 
     private lateinit var viewmodel:homeviewmodel
+
     private var adapter: Adapter?=null
 
-    lateinit var data:List<Model>
+    lateinit var data:ArrayList<Model>
+
     private var rv: RecyclerView?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        data= emptyList()
+
+        data= ArrayList()
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
-        adapter= Adapter(requireContext())
-        rv?.layoutManager= LinearLayoutManager(requireContext())
         rv?.adapter=this.adapter
-        viewmodel=ViewModelProvider(this).get(homeviewmodel::class.java)
+        adapter?.setdata(data)
         add.setOnClickListener {
           data= viewmodel.addrandom()
             setlist()
@@ -55,8 +57,14 @@ class HomeFragment : Fragment() {
     ): View? {
         val view=inflater.inflate(R.layout.fragment_home, container, false)
         rv=view.findViewById(R.id.rvPostsLis)
+        viewmodel=ViewModelProvider(this).get(homeviewmodel::class.java)
+        adapter= Adapter(requireContext())
+        rv?.layoutManager= LinearLayoutManager(requireContext())
+
+        data.clear()
+        data=viewmodel.getdata()
+
         return view
     }
-
 
 }

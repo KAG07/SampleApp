@@ -10,13 +10,13 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleapp.data.Model
-
+import java.util.ArrayList
 
 
 class Adapter(private val context: Context):RecyclerView.Adapter<Adapter.viewholder>() {
 
 
-    private var data= emptyList <Model>()
+    private lateinit var data: ArrayList<Model>
 
   inner class viewholder(itemview: View):RecyclerView.ViewHolder(itemview){
       var txtview:TextView?=null
@@ -26,7 +26,9 @@ class Adapter(private val context: Context):RecyclerView.Adapter<Adapter.viewhol
       }
   }
 
-
+    init {
+        data= ArrayList()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
         val inflator=LayoutInflater.from(context).inflate(R.layout.list_item,parent,false)
@@ -42,12 +44,13 @@ class Adapter(private val context: Context):RecyclerView.Adapter<Adapter.viewhol
         return data.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setdata(usr:List<Model>){
+
+    fun setdata(usr:ArrayList<Model>){
         val diffCallback = MyDiffCallback(data, usr)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         diffResult.dispatchUpdatesTo(this)
-        data=usr
+        data.clear()
+        data.addAll(usr)
     }
 
     open class MyDiffCallback(

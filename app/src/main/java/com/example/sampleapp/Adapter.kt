@@ -13,7 +13,7 @@ import com.example.sampleapp.data.Model
 import java.util.ArrayList
 
 
-class Adapter(private val context: Context):RecyclerView.Adapter<Adapter.viewholder>() {
+class Adapter(private val context: Context,):RecyclerView.Adapter<Adapter.viewholder>() {
 
 
     private lateinit var data: ArrayList<Model>

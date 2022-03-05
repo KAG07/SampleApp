@@ -8,4 +8,5 @@
     <string name="add">ADD</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="sample_app">Sample App</string>
 </resources>

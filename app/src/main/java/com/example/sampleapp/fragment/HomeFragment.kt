@@ -39,11 +39,12 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         rv=view.findViewById(R.id.rvPostsLis)
-        viewmodel=ViewModelProvider(this).get(homeviewmodel::class.java)
+        viewmodel=ViewModelProvider(requireActivity()).get(homeviewmodel::class.java)
         data.clear()
         data=viewmodel.addrandom()
         Log.d("Home",data.size.toString())
         adapter= Adapter(requireContext())
+        setlist()
         rv?.layoutManager= LinearLayoutManager(requireContext())
 
 
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun setlist() {
+    private fun setlist() {
         adapter?.setdata(data)
     }
 
@@ -64,8 +65,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val view=inflater.inflate(R.layout.fragment_home, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
 }
